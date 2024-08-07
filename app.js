@@ -42,7 +42,7 @@ app.get("/", (req, res) => {
                 if (error) throw error;
             });
         }
-        
+
         return res.redirect("/");
     }
 
@@ -83,6 +83,7 @@ app.get("/", (req, res) => {
         if (editid >= 0) {
             input = results.find(el => el.id == editid)
         }
+        
         return res.render("index", { data: results, input, editid })
 
     });
@@ -93,3 +94,13 @@ app.get("/", (req, res) => {
 
 app.listen(3000)
 
+
+
+// let INSERT_query = INSERT into users( email, password ) VALUES ('${email}','${password}')
+
+// connection.query(INSERT_query, function (error, results) {
+//     if (error) throw error;
+
+// });
+// return res.redirect("/")
+// }
