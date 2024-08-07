@@ -11,9 +11,8 @@
 
     <form method="get">
 
-        <!-- <input type="hidden" name=""> -->
 
-        Email : <input type="text" name="email" value="<%= input.email %>"><br><br>
+        Email : <input type="email" name="email" value="<%= input.email %>"><br><br>
 
         Password : <input type="password" name="password" value="<%= input.password %>"><br><br>
 
@@ -42,7 +41,7 @@
                 </td>
                 <td>
                     <a href="/?delid=<%= el.id %>"><button>Delete</button></a>
-                    <a href="/?editid = <%= el.id %>"><button>Edit</button></a>
+                    <a href="/?editid=<%= el.id %>"><button>Edit</button></a>
                 </td>
 
 

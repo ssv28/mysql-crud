@@ -45,23 +45,12 @@ app.get("/", (req, res) => {
             if (error) throw error;
 
         });
+
         return res.redirect("/");
 
-
     }
 
 
-    //UPDATE DATA
-
-    let { editid } = req.query;
-    console.log(editid)
-
-    let input = {}
-
-    if (editid) {
-        input = data[editid]
-        
-    }
 
 
 
@@ -86,18 +75,23 @@ app.get("/", (req, res) => {
 
     //SELECT DATA
 
+
     let SELETE_query = 'SELECT * FROM `users`'
 
     connection.query(SELETE_query, function (error, results) {
         if (error) throw error;
-
+        let editid = req.query.editid
+            console.log(results.find(el => el.id == editid));
+            
+        let input = {}
+        if(editid >= 0){
+            input = results.find(el => el.id == editid)
+        }
         return res.render("index", { data: results, input, editid })
 
     });
+    
     // console.log(SELETE_query)
-
-
-
 
 })
 
