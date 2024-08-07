@@ -36,12 +36,13 @@ app.get("/", (req, res) => {
         } else {
 
             // Insert Data
-            
+
             let INSERT_query = `INSERT INTO users (email, password) VALUES (${connection.escape(email)}, ${connection.escape(password)})`;
             connection.query(INSERT_query, function (error, results) {
                 if (error) throw error;
             });
         }
+        
         return res.redirect("/");
     }
 
