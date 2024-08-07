@@ -56,6 +56,15 @@ app.get("/", (req, res) => {
     let { editid } = req.query;
     console.log(editid)
 
+    let input = {}
+
+    if (editid) {
+        input = data[editid]
+        
+    }
+
+
+
     // if (editid && email && password) {
     //     console.log(editid && email && password)
     //     // let UPDATE_query = `UPDATE users SET email = ?, password = ? WHERE id = ?`;
@@ -66,10 +75,10 @@ app.get("/", (req, res) => {
 
     //     connection.query(UPDATE_query, function (error, results) {
     //         if (error) throw error;
-            
+
     //     });
 
-        // return res.redirect("/");
+    // return res.redirect("/");
     // }
 
 
@@ -82,7 +91,7 @@ app.get("/", (req, res) => {
     connection.query(SELETE_query, function (error, results) {
         if (error) throw error;
 
-        return res.render("index", { data: results })
+        return res.render("index", { data: results, input, editid })
 
     });
     // console.log(SELETE_query)
