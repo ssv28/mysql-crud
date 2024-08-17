@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 
             // Update Data
 
-            let UPDATE_query = `UPDATE users SET email = ${connection.escape(email)}, password = ${connection.escape(password)} WHERE id = ${connection.escape(inputData)}`;
+            let UPDATE_query = `UPDATE users SET email = ${email}, password = ${password} WHERE id = ${inputData}`;
             connection.query(UPDATE_query, function (error, results) {
                 if (error) throw error;
             });
@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
 
             // Insert Data
 
-            let INSERT_query = `INSERT INTO users (email, password) VALUES (${connection.escape(email)}, ${connection.escape(password)})`;
+            let INSERT_query = `INSERT INTO users( email, password) VALUES ('${email}','${password}')`;
             connection.query(INSERT_query, function (error, results) {
                 if (error) throw error;
             });
@@ -53,7 +53,7 @@ app.get("/", (req, res) => {
     console.log(delid)
 
     if (delid) {
-        let DELETE_query = `DELETE FROM users WHERE id = ${connection.escape(delid)}`;
+        let DELETE_query = `DELETE FROM users WHERE id = ${delid}`;
         connection.query(DELETE_query, function (error, results) {
             if (error) throw error;
 
