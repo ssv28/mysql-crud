@@ -28,7 +28,9 @@ app.get("/", (req, res) => {
 
             // Update Data
 
-            let UPDATE_query = `UPDATE users SET email = ${email}, password = ${password} WHERE id = ${inputData}`;
+            let UPDATE_query = `UPDATE users SET email = '${email}', password = '${password}' WHERE id = '${inputData}' `;
+            console.log(UPDATE_query);
+            
             connection.query(UPDATE_query, function (error, results) {
                 if (error) throw error;
             });
@@ -83,7 +85,7 @@ app.get("/", (req, res) => {
         if (editid >= 0) {
             input = results.find(el => el.id == editid)
         }
-        
+
         return res.render("index", { data: results, input, editid })
 
     });
